@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 	$host = 'oniddb.cws.oregonstate.edu';
 	$db = 'ohaverd-db';
 	$user = 'ohaverd-db';
-	$pw = 'IiY5XQx8Rg2jSG2G';
+	$pw = 'delete';
 	
 	// $host = 'localhost';
 	// $db = 'final';
