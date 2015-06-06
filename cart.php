@@ -98,8 +98,8 @@
 			text-align: center;
 			line-height: 80px;
 			background: url(hills.png) no-repeat, -webkit-linear-gradient(left, #FFB547 , black); /* For Safari 5.1 to 6.0 */
-  			background: url(hills.png) no-repeat,, -o-linear-gradient(right, #FFB547, black); /* For Opera 11.1 to 12.0 */
-  			background: url(hills.png) no-repeat,, -moz-linear-gradient(right, #FFB547, black); /* For Firefox 3.6 to 15 */
+  			background: url(hills.png) no-repeat, -o-linear-gradient(right, #FFB547, black); /* For Opera 11.1 to 12.0 */
+  			background: url(hills.png) no-repeat, -moz-linear-gradient(right, #FFB547, black); /* For Firefox 3.6 to 15 */
   			background: url(hills.png) no-repeat, linear-gradient(to right, #FFB547, black); /* Standard syntax */
 
 		}
@@ -124,6 +124,13 @@
 			border-top: 1px solid black;
 			padding-top: 4px;
 		}
+
+		#displaybal {
+			float: right;
+			color: white;
+			padding-right: 10px;
+			font-size: 12pt;
+		}
 	</style>
 </head>
 <body>
@@ -132,12 +139,14 @@
 		<a href="soaps.php">Soaps</a> | 
 		<a href="cart.php">Cart</a> | 
 		<a href="index.php?action=logout">Log Out</a>
+		<div id="displaybal"><b>Balance:</b> $<?php echo $_SESSION['balance'] ?></div>
 	</div>
 <center><h3>Cart</h3></center>
 <div id="incart">
 <?php
 	if (isset($_SESSION['name'])) {
 		echo '<p>Welcome, ' . $name . ', here you may review the items in your cart.';
+		echo '<p>If you would like to update your cart, please return to the soaps page and select a new number of soaps to purchase.';
 	}
 	else {
 		echo '<p>You must log in to view your cart.';

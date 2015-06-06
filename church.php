@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	include('imp.php');
 	
 ?>
@@ -64,7 +64,45 @@
 			margin-right: 20%;
 			margin-top: 5%;
 		}
+		#displaybal {
+			float: right;
+			color: white;
+			padding-right: 10px;
+			font-size: 12pt;
+		}
+  		#display {
+			color: red;
+			display: inline;
+			padding-left: 5px;
+		}
   		</style>
+  		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(("#num")).keyup(function() {
+				var numpicked = $('#num').val();
+				var sname = "church";
+
+				if(numpicked == "") {
+					$("#display").html("");
+				}
+				else {
+					$.ajax({
+					type: "POST",
+					url: "validate3.php",
+					data: { num: numpicked, 
+							name: sname
+						},
+					success: function(html){
+					$("#display").empty();
+					$("#display").append(html);
+					}
+				});
+			return false;
+			}
+			});
+		});
+	</script>
   		</head>
 <body>
 	<div id="navbar">
@@ -72,6 +110,7 @@
 		<a href="soaps.php">Soaps</a> | 
 		<a href="cart.php">Cart</a> | 
 		<a href="index.php?action=logout">Log Out</a>
+		<div id="displaybal"><b>Balance:</b> $<?php echo $_SESSION['balance'] ?></div>
 	</div>
 <center><h3>Red Church</h3></center>
 
@@ -82,9 +121,26 @@
 <p>A description goes here a description goes here a description goes here a description goes here a description goes here a description goes here a description goes here 
 <p><b>Price: $5.99</b>
 <p><form action="cart.php?action=church" method="POST">
-	Quantity: <input type="number" min="0" name="num" id="num">
-	<input type="submit" value="Add to cart">
+	Quantity: <input type="number" min="0" name="num" id="num"><div id="display"><input type="submit" value="Add to cart"></div>
 </form>
+<!--form should only appear if the user is logged in - no anonymous comments allowed-->
+<?php
+	if (isset($_SESSION['username'])) {
+
+		echo '<div id="commentform">
+			<p><i>We love feedback! Feel free to leave a comment:</i>
+			<form action="comment.php" method="POST">
+			<p>Name: ' . $_SESSION['name'];
+		echo '<p>Comment:
+			<br><textarea rows="8" cols="30" maxlength="255" name="comment" id="comment"></textarea>
+			<input type="hidden" name="wherefrom" id="wherefrom" value="church">
+			<input type="submit" value="Submit">
+			</form>
+			</div>';
+	}
+
+
+?>
 </div>
 </body>
 </html>

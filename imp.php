@@ -62,9 +62,19 @@ function userLogin() {
 
 	}
 
+	$findBalance = "SELECT balance FROM users WHERE user='" . $_SESSION['username'] . "'";
+
+	$money = $mysqli->query($findBalance);
+
+	while ($balnc = $money->fetch_array(MYSQLI_ASSOC)) {
+		$ba = $balnc['balance'];
+	}
+
+	$_SESSION['balance'] = $ba;
 	$_SESSION['name'] = $receive;
 
 	$result->close();
+
 
 }
 
@@ -245,6 +255,9 @@ function displayCart() {
 
 	echo '<tr><td></td><td><b>Total: </b></td><td><span id="total">$' . $soapTotal . '</span></td>';
 
+	// don't forget to update the user's balance in the user database
+	updateBalance($soapTotal);
+
 }
 
 // function to update the database with the inventory when a user adds soaps to their cart
@@ -282,6 +295,34 @@ function updateInv($soap, $quant) {
 
 	$updater->close();
 
+}
+
+function updateBalance($soapTotal) {
+	$host = 'oniddb.cws.oregonstate.edu';
+	$db = 'ohaverd-db';
+	$user = 'ohaverd-db';
+	$pw = 'delete';
+
+	$mysqli = new mysqli($host, $user, $pw, $db);
+	if ($mysqli->connect_errno) {
+		echo 'Failed to connect to MySQLi: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
+	}
+
+	$_SESSION['balance'] = $soapTotal;
+
+	$cartname = $_SESSION['username'];
+
+	$udate = $mysqli->prepare("UPDATE users SET balance=? WHERE user=?");
+
+	if (!$udate) {
+		echo 'Udate prepared statement failed.';
+	}
+
+	$udate->bind_param('ds', $soapTotal, $cartname);
+
+	$udate->execute();
+
+	$udate->close();
 }
 
 ?>

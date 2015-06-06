@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	// error_reporting(E_ALL);
+	// ini_set("display_errors", 1);
 	include('imp.php');
 
 	// need to check for logout action in case user is directed here via logout request
@@ -77,6 +78,12 @@
 		#linker {
 			text-decoration: underline;
 		}
+		#displaybal {
+			float: right;
+			color: white;
+			padding-right: 10px;
+			font-size: 12pt;
+		}
 	</style>
 </head>
 <body>
@@ -85,6 +92,7 @@
 		<a href="soaps.php">Soaps</a> | 
 		<a href="cart.php">Cart</a> | 
 		<a href="index.php?action=logout">Log Out</a>
+		<div id="displaybal"><b>Balance:</b> $<?php	echo $_SESSION['balance'] ?></div>
 	</div>
 <center><h3>Welcome to Gold Hills Soapery</h3></center>
 <div id="logine">

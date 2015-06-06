@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	include('imp.php');
 	
 ?>
@@ -129,7 +129,12 @@
 		img{
 			border-radius: 10px;
 		}
-		
+		#displaybal {
+			float: right;
+			color: white;
+			padding-right: 10px;
+			font-size: 12pt;
+		}
 	</style>
 	<!-- Enable media queries for old IE -->
 	<!--[if lt IE 9]>
@@ -142,6 +147,7 @@
 		<a href="soaps.php">Soaps</a> | 
 		<a href="cart.php">Cart</a> | 
 		<a href="index.php?action=logout">Log Out</a>
+		<div id="displaybal"><b>Balance:</b> $<?php echo $_SESSION['balance'] ?></div>
 	</div>
 <center><h3>Soaps</h3></center>
 <div class="wrap">
@@ -179,7 +185,7 @@
     <div class="boxInner">
     	<a href="swirl.php">
       <img src="swirl.jpg" /></a>
-      <div class="titleBox"><a href="swirl.php">Swirl</div>
+      <div class="titleBox">Swirl</div>
     </div>
   </div>
 </div>

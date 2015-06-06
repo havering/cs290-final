@@ -7,11 +7,6 @@ ini_set('display_errors', 1);
 	$user = 'ohaverd-db';
 	$pw = 'delete';
 	
-	// $host = 'localhost';
-	// $db = 'final';
-	// $user = 'diana';
-	// $pw = 'pass';
-
 	$mysqli = new mysqli($host, $user, $pw, $db);
 
 	if ($mysqli->connect_errno) {

@@ -36,10 +36,10 @@
       font-size: 14pt;
       text-align: center;
       line-height: 80px;
-      background: url(hills.png) no-repeat, -webkit-linear-gradient(left, #FFCC00 , black); /* For Safari 5.1 to 6.0 */
-        background: url(hills.png) no-repeat,, -o-linear-gradient(right, #FFCC00, black); /* For Opera 11.1 to 12.0 */
-        background: url(hills.png) no-repeat,, -moz-linear-gradient(right, #FFCC00, black); /* For Firefox 3.6 to 15 */
-        background: url(hills.png) no-repeat, linear-gradient(to right, #FFCC00 , black); /* Standard syntax */
+      background: url(hills.png) no-repeat, -webkit-linear-gradient(left, #FFB547 , black); /* For Safari 5.1 to 6.0 */
+        background: url(hills.png) no-repeat,, -o-linear-gradient(right, #FFB547, black); /* For Opera 11.1 to 12.0 */
+        background: url(hills.png) no-repeat,, -moz-linear-gradient(right, #FFB547, black); /* For Firefox 3.6 to 15 */
+        background: url(hills.png) no-repeat, linear-gradient(to right, #FFB547 , black); /* Standard syntax */
   }
 	</style>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
