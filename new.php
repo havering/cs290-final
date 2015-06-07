@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Create New Account</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=8"></meta> 
 	<style>
 	body {
       font-family: sans-serif;

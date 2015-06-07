@@ -1,4 +1,5 @@
 <?php
+	ini_set('session.save_path', '/nfs/stak/students/o/ohaverd/session');
 	session_start();
 	include('imp.php');
 	
@@ -62,7 +63,7 @@
 			width: 30%;
 			float: left;
 			margin-right: 20%;
-			margin-top: 5%;
+			margin-top: 7%;
 		}
 		#displaybal {
 			float: right;
@@ -75,9 +76,24 @@
 			display: inline;
 			padding-left: 5px;
 		}
+		#commentdiv {
+			border: 2px solid black;
+			height:30%;
+			width: 30%;
+			display: inline block;
+			float: right;
+			overflow: auto;
+			padding: 5px;
+			margin-top: 5%;
+			margin-right: 17%;
+		}
 		#commentform {
-			padding-top: 5%;
-
+			margin-top: 1%;
+			width: 30%;
+			float: left;
+			margin-left: 20%;
+			display: inline block;
+			overflow: hidden;
 		}
   		</style>
   		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -108,30 +124,6 @@
 			});
 		});
 
-		// // add a comment to the comment section
-		// function postComment(form) {
-		// 	// capture the name being submitted and the comment
-		// 	var commentname = form.nom.value;
-		// 	var actualcomment = form.comment.value;
-
-		// 	// need to create a div to append these to
-		// 	var first = document.createElement('div');
-		// 	first.innerHTML = commentname;
-		// 	first.setAttribute('id', 'aname');
-		// 	var second = document.createElement('p');
-		// 	second.innerHTML = actualcomment;
-		// 	second.setAttribute('id', 'acomment');
-
-		// 	var adder = document.createElement('div');
-
-		// 	adder.appendChild(first);
-		// 	adder.appendChild(second);
-
-		// 	var commentbox = document.getElementById('commentdiv');
-
-		// 	commentbox.appendChild(adder);
-
-		// }
 		</script>
   		</head>
 <body>
@@ -153,28 +145,32 @@
 <p><form action="cart.php?action=butterfly" method="POST">
 	Quantity: <input type="number" min="0" name="num" id="value"><div id="display"><input type="submit" value="Add to cart"></div>
 </form>
+</div>
+<div id="commentdiv">
+	<center><h4>Comments</h4></center>
+<?php
+	$where = 'butterfly';
+
+	displayComments($where);
+?>
+</div>
+
 <!--form should only appear if the user is logged in - no anonymous comments allowed-->
+<div id="commentform">
 <?php
 	if (isset($_SESSION['username'])) {
 
-		echo '<div id="commentform">
-			<p><i>We love feedback! Feel free to leave a comment:</i>
+		echo '<p><i>We love feedback! Feel free to leave a comment:</i>
 			<form action="comment.php" method="POST">
 			<p>Name: ' . $_SESSION['name'];
 		echo '<p>Comment:
 			<br><textarea rows="8" cols="30" maxlength="255" name="comment" id="comment"></textarea>
 			<input type="hidden" name="wherefrom" id="wherefrom" value="butterfly">
-			<input type="submit" value="Submit">
-			</form>
-			</div>';
+			<br><input type="submit" value="Submit">
+			</form>';
 	}
 
 
-?>
-</div>
-<div id="commentdiv">
-<?php
-	//displayComments();
 ?>
 </div>
 

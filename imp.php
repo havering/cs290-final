@@ -297,6 +297,7 @@ function updateInv($soap, $quant) {
 
 }
 
+// updates balance each time a new soap is added to the cart
 function updateBalance($soapTotal) {
 	$host = 'oniddb.cws.oregonstate.edu';
 	$db = 'ohaverd-db';
@@ -323,6 +324,30 @@ function updateBalance($soapTotal) {
 	$udate->execute();
 
 	$udate->close();
+}
+
+// function to display the comments for each soap
+// passed in the page that is attempting to have the comments displayed
+function displayComments($where) {
+	$host = 'oniddb.cws.oregonstate.edu';
+	$db = 'ohaverd-db';
+	$user = 'ohaverd-db';
+	$pw = 'delete';
+
+	$mysqli = new mysqli($host, $user, $pw, $db);
+	if ($mysqli->connect_errno) {
+		echo 'Failed to connect to MySQLi: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
+	}
+
+	$findcomments = "SELECT * FROM comments WHERE name='". $where . "'";
+
+	$finder = $mysqli->query($findcomments);
+
+	while ($rows = $finder->fetch_array(MYSQLI_ASSOC)) {
+		echo '<p><b>' . $rows['user'] . '</b>';
+		echo '<br>' . $rows['comment'];
+		echo '<hr>';
+	}
 }
 
 ?>

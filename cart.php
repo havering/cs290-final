@@ -1,4 +1,5 @@
 <?php
+	ini_set('session.save_path', '/nfs/stak/students/o/ohaverd/session');
 	session_start();
 	error_reporting(E_ALL);
 	include('imp.php');

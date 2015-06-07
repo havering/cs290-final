@@ -1,8 +1,9 @@
 <?php
+	ini_set('session.save_path', '/nfs/stak/students/o/ohaverd/session');
 	session_start();
 	// error_reporting(E_ALL);
 	// ini_set("display_errors", 1);
-	include('imp.php');
+	include('imp.php');	
 
 	// need to check for logout action in case user is directed here via logout request
 	if(isset($_GET['action']) && $_GET['action'] == 'logout') {
