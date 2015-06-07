@@ -50,24 +50,6 @@
 	</style>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		// check that values exist in the form before submitting
-		function formCheck() {
-			 var user = document.getElementById("username").value;
- 			 var password = document.getElementById("password").value;
- 
- 		  	if(user == ""){
-    			document.getElementById("output").innerHTML = "Please Enter a Username";
-    			document.getElementById("loginform").reset();
-   			return;
-  			}
- 
-  			if(password == ""){
-    			document.getElementById("output").innerHTML ="Please Enter a Password";
-    			document.getElementById("loginform").reset();
-    			return;
-  			}
-		}
-
 
 		$(document).ready(function(){
 			$(("#password")).keyup(function() {

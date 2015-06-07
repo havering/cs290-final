@@ -80,7 +80,6 @@
 		<p>Enter a username: <input type="text" name="username" id="username">
 		<p>Enter a password: <input type="password" name="password"><br><br>
     <div id="display"><p></div><br>
-		<!-- <p><input type="submit" value="Submit"> -->
 	</form>
 </div>
 </body>

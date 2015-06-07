@@ -132,7 +132,11 @@
 		<a href="soaps.php">Soaps</a> | 
 		<a href="cart.php">Cart</a> | 
 		<a href="index.php?action=logout">Log Out</a>
-		<div id="displaybal"><b>Balance:</b> $<?php echo $_SESSION['balance'] ?></div>
+		<div id="displaybal">
+			<?php 
+			if (isset($_SESSION['balance'])) {
+				echo '<b>Balance:</b> $' . $_SESSION['balance'];
+				} ?></div>
 	</div>
 <center><h3>Orange Cream</h3></center>
 

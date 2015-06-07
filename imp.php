@@ -14,7 +14,6 @@ function userCreate() {
 		echo 'Failed to connect to MySQLi: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
 	}
 
-	// need to break apart logging in vs creating user
 	$stmt = $mysqli->prepare("INSERT INTO users (user, name, password, balance) VALUES (?, ?, ?, ?)");
 
 	if (!$stmt) {
@@ -33,8 +32,6 @@ function userCreate() {
 	$stmt->execute();
 	
 	$stmt->close();
-
-	$_SESSION['active'] = true; 	// prevent 
 	
 }
 
@@ -179,9 +176,6 @@ function displayCart() {
 	}
 
 	$getsoaps = $mysqli->query($finder);
-
-
-	//$soaps = $finder->get_result();
 
 	while ($soaps = $getsoaps->fetch_array(MYSQLI_ASSOC)) {
 		$numOrange = $soaps['orange'];
